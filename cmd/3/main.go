@@ -96,10 +96,11 @@ func main() {
             result = append(result, string(line[i])) 
 		}
 	}
+
     var oppositeInput string
     for key, value := range result {
 
-        if key % 12 == 0 && key > 0 {
+        if key % (len(result)/dimension) == 0 && key > 0 {
             oppositeInput = oppositeInput + "\n"
         }
 
@@ -116,8 +117,7 @@ func main() {
     for _, line := range lines {
         epsilonBinary = append(epsilonBinary, getLessCommonBit(line))
     }
-    fmt.Println(gammaBinary)
-    fmt.Println(epsilonBinary)
-    fmt.Println(calculateDecimal(gammaBinary))
-    fmt.Println(calculateDecimal(epsilonBinary))
+
+    fmt.Println(calculateDecimal(epsilonBinary) * calculateDecimal(gammaBinary))
+
 }
